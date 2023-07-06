@@ -12,14 +12,10 @@ const Journey = props => {
         show={props.entered}
         type="submit"
         layer="success"
-        disabled={props.isPendingLaunch}
         onClick={() => { window.location.href="/quests" }} >
         Launch Mission Quests ✔
       </Button>
     </Clickable>
-    {props.isPendingLaunch &&
-      <Loading animate small />
-    }
   </Appear>
 };
 

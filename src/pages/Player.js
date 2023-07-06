@@ -1,12 +1,14 @@
 import { Image, Row, Col } from "arwes";
 
+import { resources } from "../settings";
+
 const Player = props => {
   return <>
     <Row>
         <Col s={12}>
             <Row nested noMargin>
                 <Col s={6}>
-                  <Image animate resources='https://media.discordapp.net/ephemeral-attachments/1092492867185950852/1116024795109261354/cyberpunk_female_character.png' >
+                  <Image animate resources={resources.female_character} >
                     Kira female character
                   </Image>
                 </Col>

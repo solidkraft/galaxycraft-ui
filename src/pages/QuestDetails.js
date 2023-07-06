@@ -12,10 +12,10 @@ const QuestDetails = (props) => {
 
   return (
     <>
-      <Appear id="quest" animate show={props.entered} style={{ padding: '20px 200px' }}>
+      <Appear id="quest" animate show={props.entered} style={{ padding: '20px 20px' }}>
         <h2>{questDetails.data?.attributes.name}</h2>
 
-        <Row>
+        <Row style={{ padding: '20px 200px' }}>
           <Col s={12}>
             <Row nested noMargin>
               <Col s={4}>

@@ -5,6 +5,8 @@ const resources = {
     large: "/img/background-large.jpg",
   },
   pattern: "/img/glow.png",
+  female_character: "/img/cyberpunk_female_character.png",
+  male_character: "/img/cyberpunk_male_character.png",
 };
 
 const sounds = {
