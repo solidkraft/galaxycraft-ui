@@ -1,6 +1,6 @@
 const API_URL = 'v1';
 const GALAXY_API_URL = 'https://galaxycraft.onrender.com/api/v1';
-const JOURNEY_ID = '5';
+const JOURNEY_ID = '7';
 
 // Load quests and return as JSON.
 async function httpGetQuests() {
