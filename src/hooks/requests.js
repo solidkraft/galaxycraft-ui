@@ -1,5 +1,5 @@
 const API_URL = 'v1';
-const GALAXY_API_URL = 'http://localhost:3000/api/v1';
+const GALAXY_API_URL = 'https://galaxycraft.onrender.com/api/v1';
 const JOURNEY_ID = '1';
 
 // Load quests and return as JSON.
