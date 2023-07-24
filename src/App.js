@@ -1,5 +1,5 @@
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
 } from "react-router-dom";
 import {
   Arwes,
