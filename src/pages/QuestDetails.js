@@ -10,6 +10,13 @@ const QuestDetails = (props) => {
   const quest = useQuestDetails(questId);
   const questDetails = useMemo(() => quest, [quest]);
 
+  const currentLesson = 1;
+  const shouldNotRenderContent = questId > currentLesson;
+
+  if (shouldNotRenderContent) {
+    return <p>You must complete the previous lessons.</p>
+  }
+
   return (
     <>
       <Appear id="quest" animate show={props.entered} style={{ padding: '20px 20px' }}>
