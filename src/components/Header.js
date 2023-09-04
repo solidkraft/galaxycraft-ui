@@ -73,8 +73,8 @@ const Header = props => {
       <nav className={`${classes.nav}`}>
         <Clickable className={classes.clickable} onClick={onNav}>
           <Highlight className={classes.button} animate layer="header">
-            <Link className={classes.link} to="/journey">
-              <i className="material-icons">storm</i>Journey
+            <Link className={classes.link} to="/journeys">
+              <i className="material-icons">storm</i>Journeys
             </Link>
           </Highlight>
         </Clickable>
