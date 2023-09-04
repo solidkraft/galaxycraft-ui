@@ -22,9 +22,8 @@ async function httpGetQuestDetails(questId) {
 
 // Submit given assignment data.
 async function httpSubmitAssignment(questId, assignment) {
-  console.log("FETCH ASSIGNMENT", questId);
   try {
-    return await fetch(`http://localhost:3000/api/v1/apprentices/1/quests/${questId}/assignment`, {
+    return await fetch(`${GALAXY_API_URL}/apprentices/4/quests/${questId}/assignment`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
