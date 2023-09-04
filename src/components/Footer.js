@@ -4,7 +4,7 @@ import Centered from "./Centered";
 const Footer = () => {
   return <ArwesFooter animate>
     <Centered>
-      <Paragraph style={{ fontSize: 14, margin: "10px 300px" }}>
+      <Paragraph style={{ fontSize: 14, margin: "10px 0", textAlign: "center" }}>
         GalaxyCraft © 2023
       </Paragraph>
     </Centered>
