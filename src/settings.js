@@ -7,6 +7,7 @@ const resources = {
   pattern: "/img/glow.png",
   female_character: "/img/cyberpunk_female_character.png",
   male_character: "/img/cyberpunk_male_character.png",
+  journey_map: "/img/futuristic_post_apocalyptic_city_map.png",
 };
 
 const sounds = {
