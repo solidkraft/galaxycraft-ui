@@ -4,6 +4,7 @@ import {
 import {
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
 import {
   Frame,
@@ -11,19 +12,25 @@ import {
   withStyles,
 } from "arwes";
 
+import useJourneys from "../hooks/useJourneys";
 import useQuests from "../hooks/useQuests";
+import useAssignments from "../hooks/useAssignments";
 
 import Centered from "../components/Centered";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 import Journey from "./Journey";
+import Journeys from "./Journeys";
 import Quests from "./Quests";
 import QuestDetails from "./QuestDetails";
 import QuestStory from "./QuestStory";
 import QuestTask from "./QuestTask";
 import QuestAssignment from "./QuestAssignment";
 import Player from "./Player";
+import Protected from "./Protected";
 
 
 const styles = () => ({
@@ -55,10 +62,15 @@ const AppLayout = props => {
   const onAbortSound = () => sounds.abort && sounds.abort.play();
   const onFailureSound = () => sounds.warning && sounds.warning.play();
 
+  const journeys = useJourneys();
   const quests = useQuests();
+  const submitAssignment = useAssignments(onSuccessSound, onFailureSound);
+
+  const location = useLocation();
+  const noHeader = (location.pathname === '/login' || location.pathname === '/register')
 
   return <div className={classes.content}>
-    <Header onNav={animateFrame} />
+    {!noHeader ? <Header onNav={animateFrame} /> : <><br/><br/><br/><br/><br/><br/></>}
     <Centered className={classes.centered}>
       <Frame animate
         show={frameVisible}
@@ -67,13 +79,25 @@ const AppLayout = props => {
         {anim => (
           <div style={{padding: "20px"}}>
           <Routes>
-            <Route path="/" element={<Journey entered={anim.entered} />} />
-            <Route path="/journey" element={<Journey entered={anim.entered} />} />
+            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/" element={
+              <Protected>
+                <Journeys entered={anim.entered} journeys={journeys} />
+              </Protected>
+            } />
+            <Route path="/journeys" element={
+              <Protected>
+                <Journeys entered={anim.entered} journeys={journeys} />
+              </Protected>
+            } />
+            <Route path="/journeys/:journey_id" element={<Journey entered={anim.entered} />} />
+            <Route path="/journeys/:journey_id/quests" element={<Quests entered={anim.entered} quests={quests} />} />
             <Route path="/quests" element={<Quests entered={anim.entered} quests={quests} />} />
             <Route path="/quests/:quest_id" element={<QuestDetails entered={anim.entered} />}>
               <Route path="story" element={<QuestStory entered={anim.entered} />} />
               <Route path="task" element={<QuestTask entered={anim.entered} />} />
-              <Route path="assignment" element={<QuestAssignment entered={anim.entered} />} />
+              <Route path="assignment" element={<QuestAssignment entered={anim.entered} submitAssignment={submitAssignment} />} />
             </Route>
             <Route path="/player" element={<Player entered={anim.entered} />} />
           </Routes>
@@ -81,7 +105,7 @@ const AppLayout = props => {
         )}
       </Frame>
     </Centered>
-    <Footer />
+    {!noHeader && <Footer />}
   </div>;
 };
 
