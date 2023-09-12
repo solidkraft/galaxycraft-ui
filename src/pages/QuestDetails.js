@@ -10,7 +10,7 @@ const QuestDetails = (props) => {
   const quest = useQuestDetails(questId);
   const questDetails = useMemo(() => quest, [quest]);
 
-  const currentLesson = 5;
+  const currentLesson = 6;
   const shouldNotRenderContent = questId > currentLesson;
 
   if (shouldNotRenderContent) {
